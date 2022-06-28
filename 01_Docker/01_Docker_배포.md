@@ -38,4 +38,13 @@
 
 
 - 사용 상 주의점
-  - Docker-compose build 를 안하면 이전에 빌드된 이미지만 사용한다
+
+  - 트러블슈팅 과정에서 로그와 리눅스가 유용했다.
+
+    ```
+    docker logs <컨테이너>
+    docker exec -it <컨테이너> /bin/bash
+    ```
+
+    
+

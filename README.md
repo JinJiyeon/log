@@ -43,13 +43,7 @@
   - deployment 로 무중단 서비스를 운영해보자
   - service 로 pod 외부의 통신을 가능하게 하자
   - ingress 로 application layer 의 네트워크 환경설정을 해주자
-
-
-
-#### 03_GCP 배포
-
-- 목적 : k8s의 구글 클라우드 버전인 GCP를 사용해서 배포를 쉽게 하자
-- 기간 : 2022/06/24 ~
+  - helm chart 로 k8s 관리를 용이하게 하자
 
 
 
