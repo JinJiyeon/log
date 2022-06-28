@@ -1,6 +1,7 @@
 ## 01 Docker 배포
 
 - Docker란?
+  - 환경설정 배포 & 설치를 쉽게 해주는 프로그램!
   - 프로그램을 실행할 때 필요한 OS, 패키지, 라이브러리 등을 이미지로 만들어서 관리한다
   - 프로세스를 격리해서 가상환경을 만든다. 가상화 OS를 만드는 것보다 더 가볍고 빠르다.
 
@@ -17,9 +18,9 @@
 
     
 
-  [Dockerfile 예시]
+  [Dockerfile 예시](./03_Docker/Dockerfile)
 
-  [Docker-compose 예시]
+  [Docker-compose 예시](./03_Docker/docker-compose.yaml)
 
 
 

@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web # 커플링
+  template:
+    metadata:
+      labels:
+        app: web # 커플링
+    spec: # 파드의 매니페스트와 동일
+      containers:
+        - name: app-db
+          image: mysql:latest
+          ports:
+            - containerPort: 3306
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: password
+            - name: MYSQL_USER
+              value: jigu
+            - name: MYSQL_PASSWORD
+              value: password
+            - name: MYSQL_DATABASE
+              value: db-test
+        - name: jigu-server
+          image: jigu-server:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8000
