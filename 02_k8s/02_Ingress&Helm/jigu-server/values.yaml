@@ -1,0 +1,46 @@
+ingress:
+  label: web-ingress
+  name: web-ingress
+  host : jigu-server.socar-data.socar.me
+
+
+service:
+  type: LoadBalancer
+  port:
+    web: 8000
+    db: 3306
+  label: web-service
+  name: web-service
+
+deployment:
+  web:
+    label: web-deploy
+  db:
+    label: db-deploy
+
+pod:
+  web:
+    name: web-pod
+    label: web-pod
+    containerPort: 8000
+    image:
+      repository: gcr.io/socar-data-dev/jigu-server
+      tag: latest
+      pullPolicy: Always
+  db:
+    name: db-pod
+    label: db-pod
+    containerPort: 3306
+    image:
+      repository: mysql
+      tag: latest
+      pullPolicy: Always
+
+env:
+  MYSQL_ROOT_PASSWORD: password
+  MYSQL_USER: jigu
+  MYSQL_USER_PASSWORD: password
+  MYSQL_DATABASE: db-test
+  MYSQL_HOST: web-service
+  MYSQL_PORT: "3306"
+

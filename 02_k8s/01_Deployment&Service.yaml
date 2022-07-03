@@ -4,11 +4,11 @@ metadata:
   name: web-service
 spec:
   selector:
-    app: web
+    app: web # 커플링1
   ports:
     - protocol: TCP
       port: 8000
-      targetPort: 8000
+      targetPort: 8000 # 커플링3
   type: LoadBalancer
 
 ---
@@ -22,12 +22,13 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: web # 커플링å
+      app: web # 커플링2
   template:
     metadata:
       labels:
-        app: web # 커플링
-    spec: # 파드의 매니페스트와 동일
+        app: web # 커플링1, 커플링2
+    spec:
+      # pod
       containers:
         - name: app-db
           image: mysql:latest
@@ -46,6 +47,6 @@ spec:
           image: jigu-server:latest
           imagePullPolicy: Never
           ports:
-            - containerPort: 8000
+            - containerPort: 8000 # 커플링3
               protocol: TCP
 

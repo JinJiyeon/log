@@ -1,0 +1,75 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.deployment.web.label }}
+  labels:
+    app: {{ .Values.service.label }}
+spec:
+  selector:
+    matchLabels:
+      deployLabel: {{ .Values.pod.web.label }}
+  template:
+    metadata:
+      name: {{ .Values.pod.web.name }}
+      labels:
+        deployLabel: {{ .Values.pod.web.label }}
+        serviceLabel: {{ .Values.service.label }}
+    spec:
+      containers:
+        - name: {{ .Values.pod.web.label }}
+          image: "{{ .Values.pod.web.image.repository }}:{{ .Values.pod.web.image.tag }}"
+          imagePullPolicy: {{ .Values.pod.web.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.pod.web.containerPort }}
+              protocol: TCP
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: {{ .Values.env.MYSQL_ROOT_PASSWORD }}
+            - name: MYSQL_USER
+              value: {{ .Values.env.MYSQL_USER }}
+            - name: MYSQL_USER_PASSWORD
+              value: {{ .Values.env.MYSQL_USER_PASSWORD }}
+            - name: MYSQL_DATABASE
+              value: {{ .Values.env.MYSQL_DATABASE }}
+            - name: MYSQL_HOST
+              value: {{ .Values.env.MYSQL_HOST }}
+#            - name: MYSQL_PORT
+#              value: {{ .Values.env.MYSQL_PORT }}
+
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.deployment.db.label }}
+spec:
+  selector:
+    matchLabels :
+      deployLabel: {{ .Values.pod.db.label }}
+  template:
+    metadata:
+      name: {{ .Values.pod.db.name }}
+      labels:
+        deployLabel: {{ .Values.pod.db.label }}
+        serviceLabel: {{ .Values.service.label }}
+    spec:
+      containers:
+        - name: {{ .Values.pod.db.label }}
+          image: "{{ .Values.pod.db.image.repository }}:{{ .Values.pod.db.image.tag }}"
+          imagePullPolicy: {{ .Values.pod.db.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.pod.db.containerPort }}
+              protocol: TCP
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: {{ .Values.env.MYSQL_ROOT_PASSWORD }}
+            - name: MYSQL_USER
+              value: {{ .Values.env.MYSQL_USER }}
+            - name: MYSQL_USER_PASSWORD
+              value: {{ .Values.env.MYSQL_USER_PASSWORD }}
+            - name: MYSQL_DATABASE
+              value: {{ .Values.env.MYSQL_DATABASE }}
+            - name: MYSQL_HOST
+              value: {{ .Values.env.MYSQL_HOST }}
+#            - name: MYSQL_PORT
+#              value: {{ .Values.env.MYSQL_PORT }}
