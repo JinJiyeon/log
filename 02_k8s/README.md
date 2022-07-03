@@ -9,20 +9,20 @@
 ### 기능
 - pod : 이미지 기반으로 실행한 컨테이너를 담고 있다
 - controller : pod의 운영 전략에 따라 알맞은 컨트롤러를 선택한다
-    - deployment : 무중단 운영
+    - deployment : 무중단 운영 [예시](./02_Ingress&Helm/jigu-server/templates/deployment.yaml)
     - job : 배치 처리
     - cronjob : 크론잡 처리
-- service : pod 외부로의 통신을 처리한다. 
-- ingress : application layer 의 네트워크 환경설정을 해준다. domain 설정, 보안 설정 등을 할 수 있다.
+- service : pod 외부로의 통신을 처리한다. [예시](./02_Ingress&Helm/jigu-server/templates/service.yaml)
+- ingress : application layer 의 네트워크 환경설정을 해준다. domain 설정, 보안 설정 등을 할 수 있다. [예시](./02_Ingress&Helm/jigu-server/templates/ingress.yaml)
 
 ### helm chart 
 - 이전 
   - pod, controller, service, ingress 별로 yaml 파일을 작성했었다. 
   - 변경할 내용이 있다면 해당 yaml 파일에 접근해야 한다.
   - 다른 사람이 yaml 파일의 내용을 파악하기가 어렵다.
-    
-- 이후
-  - values.yaml과 다른 yaml 파일이 golang을 활용해 연동되어 있다.
+  
+- 이후 [예시](./02_Ingress&Helm/jigu-server/values.yaml)
+  - values.yaml과 다른 yaml 파일이 golang을 활용해 연동되어 있다. 
   - values.yaml만 수정하면 된다.
     
 
@@ -35,13 +35,11 @@
     - 간단한 버전
       - ingress - service : pod of fastapi with sqlite - deployment
     
-
 - 통신 시 IP
     - docker : container_name 을 IP 주소로 활용함 👉 cotainer_name
     - k8s : pod 내 통신 👉 localhost
     - k8s : pod 밖 통신 👉 service 의 hostname : pod port  
     
-
 - name과 label
     - name : 리소스의 이름. 단순한 명칭. 
     - label : 오브젝트를 구분하는 카테고리 id
