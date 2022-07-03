@@ -1,7 +1,7 @@
 ingress:
   label: web-ingress
   name: web-ingress
-  host : jigu-server.socar-data.socar.me
+  host : something
 
 
 service:
@@ -24,7 +24,7 @@ pod:
     label: web-pod
     containerPort: 8000
     image:
-      repository: gcr.io/socar-data-dev/jigu-server
+      repository: something
       tag: latest
       pullPolicy: Always
   db:
