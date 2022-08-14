@@ -62,9 +62,10 @@
 
 
 
-#### [04_Linux와 Shell Programing](./04_Linux)
+#### [04_Linux와 Shell Programing](./04_Linux/README.md)
 
 - 목적 : 리눅스 서버에 대해 이해하자
 - 기간 : 2022/08/08 ~ 2022/08/14
 - Ref
   - 책 <UNIX/Linux 시스템 관리자를 위한 쉘 스크립트 활용 가이드>
+
