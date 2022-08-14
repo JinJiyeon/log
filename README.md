@@ -62,7 +62,7 @@
 
 
 
-#### [04_Linux와 Shell Programing](./04_Linux/README.md)
+#### [04_Linux 서버 관리](./04_Linux/README.md)
 
 - 목적 : 리눅스 서버에 대해 이해하자
 - 기간 : 2022/08/08 ~ 2022/08/14
