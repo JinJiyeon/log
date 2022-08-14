@@ -5,25 +5,41 @@
 - Ref
   - 책 <오라클로 배우는 데이터베이스 입문>
 - 주안점
-  - oracle DB의 아키텍쳐를 분석한다
+  - oracle DB의 아키텍쳐를 분석한다 (eg. lock, memory, index, join)
   - 같은 결과 다른 성능인 두 코드를 비교한다
   - 운영에 필요한 세부 기능을 학습한다
 
+- 목차
 
+  - DB의 메모리, PGA와 SGA
+
+  - DB 세션과 동기화 문제
+
+  - DB index 
+
+  - 권한 관리
+
+  - join의 원리
+
+    
 
 ## 아키텍쳐
 
 - PGA와 SGA [[참고]](https://1duffy.tistory.com/18)
+
   - PGA와 SGA 모두 메모리인데, 공유 범위와 용도에 차이가 있다.
-  - PGA :
-    - DB에 접속한 각 유저에게 할당되는 DB 서버 프로세스의 메모리. 
-      각 유저 간에 공유되지 않는다.
-    - 정렬할 때 주로 사용한다
-    - format 에 대한 정보가 저장된다. 
-      이를 변경하면 format 을 다르게 표기할 수 있다.
-  - SGA : 
-    - 디스크에서 데이터를 읽거나 변경할 때 사용하는 메모리.
-      자주 쓰이는 데이터가 미리 올라와있다면 더 빠르게 작업이 가능하다.
+
+    - PGA :
+      - DB에 접속한 각 유저에게 할당되는 DB 서버 프로세스의 메모리. 
+        각 유저 간에 공유되지 않는다.
+      - 정렬할 때 주로 사용한다
+      - format 에 대한 정보가 저장된다. 
+        이를 변경하면 format 을 다르게 표기할 수 있다.
+
+    - SGA : 
+      - 디스크에서 데이터를 읽거나 변경할 때 사용하는 메모리.
+        자주 쓰이는 데이터가 미리 올라와있다면 더 빠르게 작업이 가능하다.
+
   - 운영 시 참고사항
     - nls_session_parameter를 조회하면
       해당 pga의 format 을 확인할 수 있다.
@@ -36,6 +52,8 @@
   - lock 1단계 : read lock / write lock
     - write에 비해 read는 덜 critical 하고, 횟수가 많다. 
       read 에 lock 을 걸지 않을 경우 일관성은 떨어질 수 있으나 효율을 향상시킬 수 있다.
+    - oracle DB는 read에 lock을 걸지 않는다.
+      만약 read lock을 걸고 싶다면, 'SELECT ~ FOR UPDATE' 구문을 사용하면 된다.
   - lock 2단계 : where / where x
     - update delete with where 는 행 레벨로 락이 걸린다.
     - update delete without where 는 테이블 레벨로 락이 걸린다.
