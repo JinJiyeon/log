@@ -1,4 +1,4 @@
-# Network 스터디 기록
+# Operation 관련 스터디 기록
 
 
 
@@ -69,3 +69,11 @@
 - Ref
   - 책 <UNIX/Linux 시스템 관리자를 위한 쉘 스크립트 활용 가이드>
 
+
+#### [05_EffectiveJava](./05_EffectiveJava/README.md)
+
+- 목적 : 자바 언어의 특징을 이해하자
+- 기간 : 2022/09/28 ~
+- 방식 : 3인 스터디로 매주 아이템 3개씩.
+- Ref
+  - 책 <Effective Java>
