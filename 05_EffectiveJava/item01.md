@@ -1,4 +1,4 @@
-## 아이템1. 생성자 대신 static factory method를 고려하라
+## 아이템01. 생성자 대신 static factory method를 고려하라
 
 [참고 블로그](https://tecoble.techcourse.co.kr/post/2020-07-16-static-method/)
 

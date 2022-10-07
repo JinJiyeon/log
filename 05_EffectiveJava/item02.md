@@ -1,4 +1,4 @@
-## 아이템2. 생성자에 매개변수가 많다면 Builder를 고려하라
+## 아이템02. 생성자에 매개변수가 많다면 Builder를 고려하라
 
 python의 `def method(name=required, color=red)` 를 자바에서 구현하려면 Builder 패턴이 좋다.
 
